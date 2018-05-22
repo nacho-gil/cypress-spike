@@ -1,17 +1,18 @@
 {
-  "name": "puppeteer-spike",
-  "description": "Demostrate Puppeteer capabilities",
+  "name": "cypress-spike",
+  "description": "Demonstrate Cypress capabilities",
   "version": "1.0.0",
   "author": "Ignacio Gil",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "cypress": "cypress open",
-    "cypress:all": "cypress run"
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
-    "cypress": "^2.1.0"
+    "cypress": "^2.1.0",
+    "html-dnd": "^1.2.0"
   }
 }
