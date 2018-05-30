@@ -99,4 +99,33 @@ describe('Login', () => {
 
   });
 
+
+  it('should upload an image', () => {
+    // Select navigation
+    cy.get('.nav__burger-icon').click();
+    // select menu by containing text
+    cy.get('.md-open-menu-container').contains('IMAGE LIBRARY').click();
+
+    // Both `uploadImage` and `dropImage` commands may be used
+    // cy.uploadImage('input[type="file"]', 'cinema-pass.png', 'now-tv.jpg');
+    cy.dropImage('[ngf-drop]', 'cinema-pass.png', 'now-tv.jpg');
+
+    cy.get(`image-editor:not(.upload-images__inactive) [name="contentProvider"]`).type('Movies');
+    cy.get(`image-editor:not(.upload-images__inactive) [name="copyright"]`).type('Sky');
+
+    cy.get('.upload-images__list-image').eq(1).click();
+
+    cy.get(`image-editor:not(.upload-images__inactive) [name="contentProvider"]`).type('Movies');
+    cy.get(`image-editor:not(.upload-images__inactive) [name="copyright"]`).type('Sky');
+
+    cy.get('button').contains('Save image(s) to library').click();
+
+    cy.get('.image-library__masonry-image', {timeout: 30000})
+        // .should('have.length', 2);
+
+    cy.wait(2000);
+    cy.screenshot('image-uploaded');
+  });
+
+
 });
